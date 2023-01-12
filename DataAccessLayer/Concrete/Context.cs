@@ -13,13 +13,13 @@ namespace DataAccess.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=HAN\\MSQLSERVER01;database=CoreBlogDb;integrated security=true;");          
+            optionsBuilder.UseSqlServer("server=HAN;database=CoreBlogDb;integrated security=true;");          
         }
-        public DbSet<About> abouts { get; set; }
-        public DbSet<Blog> blogs { get; set; }
-        public DbSet<Category> categories { get; set; }
-        public DbSet<Comment> comments { get; set; }
-        public DbSet<Contact> contacts { get; set; }
-        public DbSet<Writer> writers { get; set; }
+        public DbSet<About> Abouts { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Writer> Writers { get; set; }
     }
 }

@@ -10,12 +10,12 @@ namespace Entity.Concrete
     public class About
     {
         [Key]
-        public int aboutId { get; set; }
-        public string aboutDetails1 { get; set; }
-        public string aboutDetails2 { get; set; }
-        public string aboutImage1 { get; set; }
-        public string aboutImage2 { get; set; }
-        public string aboutMapLocation { get; set; }
-        public bool aboutStatus { get; set; }
+        public int AboutId { get; set; }
+        public string AboutDetails1 { get; set; }
+        public string AboutDetails2 { get; set; }
+        public string AboutImage1 { get; set; }
+        public string AboutImage2 { get; set; }
+        public string AboutMapLocation { get; set; }
+        public bool AboutStatus { get; set; }
     }
 }

@@ -10,12 +10,12 @@ namespace Entity.Concrete
     public class Blog
     {
         [Key]
-        public int blogId { get; set; }
-        public string blogTitle { get; set; }
-        public string blogContent { get; set; }
-        public string blogThumbnailImage { get; set; }
-        public string blogImage { get; set; }
-        public DateTime blogCreateDate { get; set; }
-        public bool blogStatus { get; set; }
+        public int BlogId { get; set; }
+        public string BlogTitle { get; set; }
+        public string BlogContent { get; set; }
+        public string BlogThumbnailImage { get; set; }
+        public string BlogImage { get; set; }
+        public DateTime BlogCreateDate { get; set; }
+        public bool BlogStatus { get; set; }
     }
 }

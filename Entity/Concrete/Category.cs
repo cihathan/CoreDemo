@@ -10,9 +10,9 @@ namespace Entity.Concrete
     public class Category
     {
         [Key]
-        public int categoryId { get; set; }
-        public string categoryName { get; set; }
-        public string categoryDescription { get; set; }
-        public bool categoryStatus { get; set; }
+        public int CategoryId { get; set; }
+        public string CategoryName { get; set; }
+        public string CategoryDescription { get; set; }
+        public bool CategoryStatus { get; set; }
     }
 }

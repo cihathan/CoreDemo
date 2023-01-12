@@ -10,12 +10,12 @@ namespace Entity.Concrete
     public class Contact
     {
         [Key]
-        public int contactId { get; set; }
-        public string contactUserName { get; set; }
-        public string contactMail { get; set; }
-        public string contactSubject { get; set; }
-        public string contactMessage { get; set; }
-        public DateTime contactDate { get; set; }
-        public bool contactStatus { get; set; }
+        public int ContactId { get; set; }
+        public string ContactUserName { get; set; }
+        public string ContactMail { get; set; }
+        public string ContactSubject { get; set; }
+        public string ContactMessage { get; set; }
+        public DateTime ContactDate { get; set; }
+        public bool ContactStatus { get; set; }
     }
 }

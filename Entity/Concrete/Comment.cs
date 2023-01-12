@@ -10,11 +10,11 @@ namespace Entity.Concrete
     public class Comment
     {
         [Key]
-        public int commentId { get; set; }
-        public string commentUserName { get; set; }
-        public string commentTitle { get; set; }
-        public string commentContent { get; set; }
-        public DateTime commentDate { get; set; }
-        public bool commentStatus { get; set; }
+        public int CommentId { get; set; }
+        public string CommentUserName { get; set; }
+        public string CommentTitle { get; set; }
+        public string CommentContent { get; set; }
+        public DateTime CommentDate { get; set; }
+        public bool CommentStatus { get; set; }
     }
 }
