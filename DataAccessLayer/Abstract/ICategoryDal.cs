@@ -13,6 +13,6 @@ namespace DataAccess.Abstract
         void AddCategory(Category category);
         void DeleteCategory(Category category);
         void UpdateCategory(Category category);
-        Category GetById (int id);
+        Category GetById(int id);
     }
 }
