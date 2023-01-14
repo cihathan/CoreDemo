@@ -18,11 +18,21 @@ namespace DataAccess.Repositories
             context.SaveChanges();
         }
 
+        public void Delete(Blog t)
+        {
+            throw new NotImplementedException();
+        }
+
         public void DeleteBlog(Blog blog)
         {
             using var context = new Context();
             context.Remove(blog);
             context.SaveChanges();
+        }
+
+        public List<Blog> GetAll()
+        {
+            throw new NotImplementedException();
         }
 
         public Blog GetById(int id)
@@ -31,10 +41,20 @@ namespace DataAccess.Repositories
             return context.Blogs.Find(id);
         }
 
+        public void Insert(Blog t)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Blog> ListAllBlog()
         {
             using var context = new Context();
             return context.Blogs.ToList();
+        }
+
+        public void Update(Blog t)
+        {
+            throw new NotImplementedException();
         }
 
         public void UpdateBlog(Blog blog)
