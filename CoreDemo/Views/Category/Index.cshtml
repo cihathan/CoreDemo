@@ -3,8 +3,6 @@
 @{
     Layout = null;
 }
-<a href="~/lib/bootstrap/dist/css/bootstrap.css.map">~/lib/bootstrap/dist/css/bootstrap.css.map</a>
-<a href="~/lib/bootstrap/dist/css/bootstrap.min.css.map">~/lib/bootstrap/dist/css/bootstrap.min.css.map</a>
 <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 <table class="table table-bordered">
@@ -16,15 +14,12 @@
         <th>Sil</th>
     </tr>
     @foreach(var item in Model){
-        <tr>
-            <td>
+        <tr>          
                 <td>@item.CategoryId</td>
                 <td>@item.CategoryName</td>
                 <td>@item.CategoryStatus</td>
                 <td><a href="#" class="btn btn-warning">Detaylar</a></td>
                 <td><a href="#" class="btn btn-danger">Sil</a></td>
-                
-            </td>
         </tr>
     }
 </table>
