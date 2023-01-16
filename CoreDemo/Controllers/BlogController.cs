@@ -10,7 +10,7 @@ namespace CoreDemo.Controllers
         BlogManager blogManager = new BlogManager (new EfBlogRepository());
         public IActionResult Index()
         {
-            var values = blogManager.GetAllBlogs();
+            var values = blogManager.GetBlogListWithCategory();
             return View(values);
         }
     }

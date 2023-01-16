@@ -33,7 +33,12 @@ namespace Business.Concrete
 			return blogDal.GetAll();
 		}
 
-		public Blog GetById(int id)
+        public List<Blog> GetBlogListWithCategory()
+        {
+            return blogDal.GetListWithCategory();
+        }
+
+        public Blog GetById(int id)
 		{
 			throw new NotImplementedException();
 		}
