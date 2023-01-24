@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Entity.Concrete.Blog>
 @{
-    ViewData["Title"] = "BlogReadAll";
-    Layout = "~/Views/Shared/UserLayout.cshtml";
+	ViewData["Title"] = "BlogReadAll";
+	Layout = "~/Views/Shared/UserLayout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -17,44 +17,44 @@
 				<div class="col-lg-8 left-blog-info-w3layouts-agileits text-left">
 					@foreach (var item in Model)
 					{
-				
-					<div class="blog-grid-top">
-						<div class="b-grid-top">
-							<div class="blog_info_left_grid">
+
+						<div class="blog-grid-top">
+							<div class="b-grid-top">
+								<div class="blog_info_left_grid">
 									<a href="~/coreblogtheme/single.html">
 										<img src="~/coreblogtheme/images/b1.jpg" class="img-fluid" alt="">
-								</a>
-							</div>
-							<div class="blog-info-middle">
-								<ul>
-									<li>
-										<a href="#">
+									</a>
+								</div>
+								<div class="blog-info-middle">
+									<ul>
+										<li>
+											<a href="#">
 												<i class="far fa-calendar-alt"></i> @(((DateTime)item.BlogCreateDate).ToString("dd-MMM-yyyy"))
-										</a>
-									</li>
-									<li class="mx-2">
-										<a href="#">
-											<i class="far fa-thumbs-up"></i> 0 Beğeni
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<i class="far fa-comment"></i> 0 Yorum
-										</a>
-									</li>
+											</a>
+										</li>
+										<li class="mx-2">
+											<a href="#">
+												<i class="far fa-thumbs-up"></i> 0 Beğeni
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="far fa-comment"></i> 0 Yorum
+											</a>
+										</li>
 
-								</ul>
+									</ul>
+								</div>
 							</div>
-						</div>
 
-						<h3>
+							<h3>
 								<a href="~/coreblogtheme/single.html">@item.BlogTitle</a>
-						</h3>
-						<p>
-							@item.BlogContent
-						</p>
+							</h3>
+							<p>
+								@item.BlogContent
+							</p>
 							<a href="/Blog/Index/" class="btn btn-primary read-m">Blog Listesi</a>
-					</div>
+						</div>
 					}
 
 					@await Component.InvokeAsync("CommentListBlog",new{id=ViewBag.Id})
@@ -70,16 +70,9 @@
 						<div class="tech-btm">
 							<img src="~/coreblogtheme/images/banner1.jpg" class="img-fluid" alt="">
 						</div>
-						<div class="tech-btm">
-							<h4>Sign up to our newsletter</h4>
-							<p>Pellentesque dui, non felis. Maecenas male </p>
-							<form action="#" method="post">
-								<input type="email" placeholder="Email" required="">
-								<input type="submit" value="Subscribe">
-							</form>
-
-						</div>
 						
+						@await Html.PartialAsync("~/Views/NewsLetter/SubscribeMail.cshtml")
+
 						@await Component.InvokeAsync("CategoryList")
 
 						@await Component.InvokeAsync("WriterLastBlog")

@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.EntityFramework
 {
-    // Entity Framework Category Repository
-    public class EfCategoryRepository : GenericRepository<Category>, ICategoryDal
-    {
-    }
+	public class EfNewsLetterRepository : GenericRepository<NewsLetter>, INewsLetterDal
+	{
+	}
 }
