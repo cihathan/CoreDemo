@@ -66,9 +66,7 @@ namespace CoreDemo
             app.UseStaticFiles();
 
             app.UseAuthentication();
-
-            app.UseSession();
-
+          
             app.UseRouting();
 
             app.UseAuthorization();

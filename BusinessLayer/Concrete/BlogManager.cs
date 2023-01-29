@@ -34,6 +34,11 @@ namespace Business.Concrete
 			return blogDal.GetAll();
 		}
 
+		public List<Blog> GetLast3Blog()
+		{
+			return blogDal.GetAll().TakeLast(3).ToList();
+		}
+
         public List<Blog> GetBlogListWithCategory()
         {
             return blogDal.GetListWithCategory();
@@ -57,5 +62,10 @@ namespace Business.Concrete
 		{
 			return blogDal.GetAll(x=>x.WriterId==id);
         }
+
+		public object GetLast3Blog(object blog1, object blog2)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }
