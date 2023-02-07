@@ -12,7 +12,7 @@ namespace DataAccess.Abstract
         void Insert(T t);
         void Delete(T t);
         void Update(T t);
-        List<T> GetAll();
+        List<T> GetListAll();
         T GetById(int id);
         List<T> GetAll(Expression<Func<T, bool>> filter);
 

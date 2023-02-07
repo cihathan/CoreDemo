@@ -18,7 +18,7 @@ namespace DataAccess.Repositories
             context.SaveChanges();
         }
 
-        public List<T> GetAll()
+        public List<T> GetListAll()
         {
             using var context = new Context();
             return context.Set<T>().ToList();

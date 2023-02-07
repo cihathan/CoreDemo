@@ -16,11 +16,19 @@ namespace DataAccess.EntityFramework
     {
         public List<Blog> GetListWithCategory()
         {
-            using (var c = new Context())
+            using (var context = new Context())
             {
-                return c.Blogs.Include(x => x.Category).ToList();
+                return context.Blogs.Include(x => x.Category).ToList();
             }
 
+        }
+
+        public List<Blog> GetListWithCategoryByWriter(int id)
+        {
+            using (var context = new Context())
+            {
+                return context.Blogs.Include(x => x.Category).Where(x => x.WriterId == id).ToList();
+            }
         }
     }
 }

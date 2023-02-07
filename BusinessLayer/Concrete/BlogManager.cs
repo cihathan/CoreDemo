@@ -19,43 +19,23 @@ namespace Business.Concrete
 			this.blogDal = blogDal;
 		}
 
-		public void AddBlog(Blog blog)
-		{
-			throw new NotImplementedException();
-		}
-
-		public void DeleteBlog(Blog blog)
-		{
-			throw new NotImplementedException();
-		}
-		
-		public List<Blog> GetAllBlogs()
-		{
-			return blogDal.GetAll();
-		}
-
 		public List<Blog> GetLast3Blog()
 		{
-			return blogDal.GetAll().TakeLast(3).ToList();
+			return blogDal.GetListAll().TakeLast(3).ToList();
 		}
 
         public List<Blog> GetBlogListWithCategory()
         {
             return blogDal.GetListWithCategory();
         }
-
-        public Blog GetById(int id)
+		public List<Blog> Test(int id)
 		{
-			throw new NotImplementedException();
+			return blogDal.GetListWithCategoryByWriter(id);
 		}
 
 		public List<Blog> GetBlogById(int id)
 		{
 			return blogDal.GetAll(x => x.BlogId == id);
-		}
-		public void UpdateBlog(Blog blog)
-		{
-			throw new NotImplementedException();
 		}
 
 		public List<Blog> GetBlogListWithWriter(int id)
@@ -65,7 +45,32 @@ namespace Business.Concrete
 
 		public object GetLast3Blog(object blog1, object blog2)
 		{
+			return blogDal.GetListAll().TakeLast(3).ToList();
+		}
+
+		public void Add(Blog t)
+		{
+			blogDal.Insert(t);
+		}
+
+		public void Delete(Blog t)
+		{
 			throw new NotImplementedException();
 		}
+
+		public void Update(Blog t)
+		{
+			throw new NotImplementedException();
+		}
+
+		public List<Blog> GetAll()
+		{
+			return blogDal.GetListAll();
+		}
+
+		public Blog GetById(int id)
+		{
+            throw new NotImplementedException();
+        }
 	}
 }

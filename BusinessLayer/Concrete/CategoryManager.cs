@@ -19,29 +19,29 @@ namespace Business.Concrete
             this.categoryDal = categoryDal;
         }
 
-        public void AddCategory(Category category)
+        public void Add(Category t)
         {
-            this.categoryDal.Insert(category);
+            categoryDal.Insert(t);
         }
 
-        public void DeleteCategory(Category category)
+        public void Delete(Category t)
         {
-            this.categoryDal.Delete(category);
+            categoryDal.Delete(t);
         }
 
-        public List<Category> GetAllCategories()
+        public List<Category> GetAll()
         {
-            return this.categoryDal.GetAll();
+            return categoryDal.GetListAll();
         }
 
         public Category GetById(int id)
         {
-            return this.categoryDal.GetById(id);
+            return categoryDal.GetById(id);
         }
 
-        public void UpdateCategory(Category category)
+        public void Update(Category t)
         {
-            this.categoryDal.Update(category);
+            categoryDal.Update(t);
         }
     }
 }
