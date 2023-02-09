@@ -55,12 +55,12 @@ namespace Business.Concrete
 
 		public void Delete(Blog t)
 		{
-			throw new NotImplementedException();
+			blogDal.Delete(t);
 		}
 
 		public void Update(Blog t)
 		{
-			throw new NotImplementedException();
+			blogDal.Update(t);
 		}
 
 		public List<Blog> GetAll()
@@ -70,7 +70,7 @@ namespace Business.Concrete
 
 		public Blog GetById(int id)
 		{
-            throw new NotImplementedException();
+			return blogDal.GetById(id);
         }
 	}
 }

@@ -1,12 +1,12 @@
 ﻿@model Entity.Concrete.Blog
 @{
-	ViewData["Title"] = "BlogAdd";
+	ViewData["Title"] = "AddBlog";
 	Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
 
 <h1>Yeni Blog Giriş</h1>
 <br />
-@using (Html.BeginForm("BlogAdd", "Blog", FormMethod.Post))
+@using (Html.BeginForm("AddBlog","Blog", FormMethod.Post))
 {
 	@Html.Label("Blog Başlığı")
 	@Html.TextBoxFor(x=>x.BlogTitle,new {@class="form-control"})
