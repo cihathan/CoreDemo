@@ -25,7 +25,7 @@ namespace CoreDemo.Controllers
             {
                 writer.WriterStatus = true;
                 writer.WriterAbout = "Test";
-                writerManager.AddWriter(writer);
+                writerManager.Add(writer);
                 return RedirectToAction("Index", "Blog");
             }
             else

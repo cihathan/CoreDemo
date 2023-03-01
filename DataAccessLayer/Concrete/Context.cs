@@ -15,6 +15,26 @@ namespace DataAccess.Concrete
         {
             optionsBuilder.UseSqlServer("server=HAN;database=CoreBlogDb;integrated security=true;");
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Message2>()
+                .HasOne(x => x.SenderWriter)
+                .WithMany(y => y.MessageSender)
+                .HasForeignKey(z => z.SenderId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            modelBuilder.Entity<Message2>()
+                .HasOne(x => x.ReceiverWriter)
+                .WithMany(y => y.MessageReceiver)
+                .HasForeignKey(z => z.ReceiverId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+
+            // message2 senderuser receiveruser / SenderWriter- ReceiverWriter
+            // writer senderwriter receiverwriter / MessageSender - MessageReceiver
+        }
+
         public DbSet<About> Abouts { get; set; }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Category> Categories { get; set; }
@@ -22,5 +42,9 @@ namespace DataAccess.Concrete
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Writer> Writers { get; set; }
         public DbSet<NewsLetter> NewsLetters { get; set; }
+        public DbSet<BlogRating> BlogRatings { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
+        public DbSet<Message> Messages { get; set; }
+        public DbSet<Message2> Messages2 { get; set; }
     }
 }

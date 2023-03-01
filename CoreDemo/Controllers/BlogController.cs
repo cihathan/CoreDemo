@@ -12,12 +12,15 @@ using System.Collections.Generic;
 using System.Security.Cryptography.Xml;
 using System.Net.Mail;
 using System.Security.Cryptography.X509Certificates;
+using DataAccess.Concrete;
 
 namespace CoreDemo.Controllers
 {
-    [AllowAnonymous]
+
     public class BlogController : Controller
     {
+        Context context = new Context();
+
         BlogManager blogManager = new BlogManager(new EfBlogRepository());
         CategoryManager categoryManager = new CategoryManager(new EfCategoryRepository());
         public IActionResult Index()
@@ -32,13 +35,15 @@ namespace CoreDemo.Controllers
             return View(values);
         }
         public ActionResult BlogListByWriter()
-        {
-            var values = blogManager.Test(1);
+        {           
+            var userMail = User.Identity.Name;
+            var writerId = context.Writers.Where(x => x.WriterMail == userMail).Select(x => x.WriterId).FirstOrDefault();
+            var values = blogManager.GetBlogListWithWriter (writerId);
             return View(values);
         }
         [HttpGet]
         public IActionResult AddBlog()
-        {           
+        {
             List<SelectListItem> categoryValues = (from x in categoryManager.GetAll() select new SelectListItem { Text = x.CategoryName, Value = x.CategoryId.ToString() }).ToList();
             ViewBag.categoryValue = categoryValues;
             return View();
@@ -48,11 +53,15 @@ namespace CoreDemo.Controllers
         {
             BlogValidator validator = new BlogValidator();
             ValidationResult results = validator.Validate(blog);
+
+            var userMail = User.Identity.Name;
+            var writerId = context.Writers.Where(x => x.WriterMail == userMail).Select(x => x.WriterId).FirstOrDefault();
+
             if (results.IsValid)
             {
                 blog.BlogStatus = true;
                 blog.BlogCreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-                blog.Writer.WriterId = 1;
+                blog.WriterId = writerId;
                 blogManager.Add(blog);
                 return RedirectToAction("BlogListByWriter", "Blog");
             }
@@ -63,7 +72,7 @@ namespace CoreDemo.Controllers
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
                 return View();
-            }        
+            }
         }
         public IActionResult DeleteBlog(int id)
         {
@@ -82,8 +91,11 @@ namespace CoreDemo.Controllers
         [HttpPost]
         public IActionResult EditBlog(Blog blog)
         {
-            blog.WriterId = 1;      
-           
+            var userMail = User.Identity.Name;
+            var writerId = context.Writers.Where(x => x.WriterMail == userMail).Select(x => x.WriterId).FirstOrDefault();
+
+            blog.WriterId = writerId;
+
             blog.BlogStatus = true;
             blogManager.Update(blog);
             return RedirectToAction("BlogListByWriter");

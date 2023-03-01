@@ -28,10 +28,6 @@ namespace Business.Concrete
         {
             return blogDal.GetListWithCategory();
         }
-		public List<Blog> Test(int id)
-		{
-			return blogDal.GetListWithCategoryByWriter(id);
-		}
 
 		public List<Blog> GetBlogById(int id)
 		{

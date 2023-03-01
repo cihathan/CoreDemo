@@ -22,7 +22,7 @@
 			<th>@item.BlogId</th>
 			<td>@item.BlogTitle</td>
 			<td>@(((DateTime)item.BlogCreateDate).ToString("dd-MMM-yyyy"))</td>
-			<td><span class="badge badge-primary">@item.Category.CategoryName</span></td>
+			<td><span class="badge badge-primary">@item.CategoryId</span></td>
 			<td>
 				@if (item.BlogStatus)
 				{
