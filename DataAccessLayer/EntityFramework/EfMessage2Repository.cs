@@ -13,11 +13,19 @@ namespace DataAccess.EntityFramework
 {
     public class EfMessage2Repository : GenericRepository<Message2>, IMessage2Dal
     {
-        public List<Message2> GetListWithMessageByWriter(int id)
+        public List<Message2> GetMessageInboxListByWriter(int id)
         {
-            using (var c = new Context())
+            using (var context = new Context())
             {
-                return c.Messages2.Include(x => x.SenderWriter).Where(x => x.SenderId == id).ToList();
+                return context.Messages2.Include(x => x.SenderWriter).Where(x => x.SenderId == id).ToList();
+            }
+        }
+
+        public List<Message2> GetMessageSendboxListByWriter(int id)
+        {
+            using (var context = new Context())
+            {
+                return context.Messages2.Include(x=>x.ReceiverWriter).Where(x=>x.SenderId==id).ToList();
             }
         }
     }

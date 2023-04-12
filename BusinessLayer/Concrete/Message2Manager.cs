@@ -20,7 +20,7 @@ namespace Business.Concrete
 
 		public void Add(Message2 t)
 		{
-			throw new NotImplementedException();
+			message2Dal.Insert(t);
 		}
 
 		public void Delete(Message2 t)
@@ -40,10 +40,15 @@ namespace Business.Concrete
 
 		public List<Message2> GetMessageInboxListByWriter(int id)
 		{
-			return message2Dal.GetListWithMessageByWriter(id);
+			return message2Dal.GetMessageInboxListByWriter(id);
 		}
 
-		public void Update(Message2 t)
+        public List<Message2> GetMessageSendboxListByWriter(int id)
+        {
+			return message2Dal.GetMessageSendboxListByWriter(id);
+        }
+
+        public void Update(Message2 t)
 		{
 			throw new NotImplementedException();
 		}

@@ -27,5 +27,10 @@ namespace Business.Concrete
 		{
 			return commentDal.GetAll(x => x.BlogId == id);
 		}
-	}
+
+        public List<Comment> GetCommentWithBlog()
+        {
+            return commentDal.GetListWithBlog();
+        }
+    }
 }

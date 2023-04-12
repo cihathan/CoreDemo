@@ -1,8 +1,10 @@
-﻿using DataAccess.Concrete;
+﻿using CoreDemo.Models;
+using DataAccess.Concrete;
 using Entity.Concrete;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,45 +13,48 @@ using System.Threading.Tasks;
 
 namespace CoreDemo.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
-        [AllowAnonymous]
+        private readonly SignInManager<AppUser> signInManager;
+
+        public LoginController(SignInManager<AppUser> signInManager)
+        {
+            this.signInManager = signInManager;
+        }
+
         public IActionResult Index()
         {
             return View();
         }
+
         [HttpPost]
-        [AllowAnonymous]
-        public async Task<IActionResult> Index(Writer writer)
+        public async Task<IActionResult> Index(UserSignInViewModel userSignInViewModel)
         {
-            Context context = new Context();
-            //var datavalue = context.Writers.FirstOrDefault(x=>x.WriterMail == writer.WriterMail && x.WriterPassword== writer.WriterPassword);
-            //if (datavalue != null)
-            //{
-            //    HttpContext.Session.SetString("UserName", writer.WriterMail);
-            //    return RedirectToAction("Index", "Writer");
-            //}
-            //else
-            //{
-            //    return View();
-            //}
-            var datavalue = context.Writers.FirstOrDefault(x => x.WriterMail == writer.WriterMail && x.WriterPassword == writer.WriterPassword);
-            if (datavalue!=null)
+            if (ModelState.IsValid)
             {
-                var claims = new List<Claim> {
-                    new Claim(ClaimTypes.Name,writer.WriterMail)
-                };
-                var useridentity = new ClaimsIdentity(claims,"value");
-                ClaimsPrincipal principal= new ClaimsPrincipal(useridentity);
-                await HttpContext.SignInAsync(principal);
-                return RedirectToAction("Index", "Dashboard");
+                var result = await signInManager.PasswordSignInAsync(userSignInViewModel.userName, userSignInViewModel.password, false, true);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Dashboard");
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Login");
+                }
+
             }
-            else
-            {
-                return View();
-            }
-            
+            return View();
+        }
+        public async Task<IActionResult> LogOut()
+        {
+            await signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Login");
         }
 
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
     }
 }

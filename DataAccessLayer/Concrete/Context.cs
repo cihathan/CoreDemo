@@ -1,4 +1,5 @@
 ﻿using Entity.Concrete;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete
 {
-    public class Context : DbContext
+    public class Context : IdentityDbContext<AppUser, AppRole, int>
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -30,7 +31,7 @@ namespace DataAccess.Concrete
                 .HasForeignKey(z => z.ReceiverId)
                 .OnDelete(DeleteBehavior.ClientSetNull);
 
-
+            base.OnModelCreating(modelBuilder);
             // message2 senderuser receiveruser / SenderWriter- ReceiverWriter
             // writer senderwriter receiverwriter / MessageSender - MessageReceiver
         }

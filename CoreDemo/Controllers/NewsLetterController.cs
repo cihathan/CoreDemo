@@ -1,10 +1,12 @@
 ﻿using Business.Concrete;
 using DataAccess.EntityFramework;
 using Entity.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoreDemo.Controllers
 {
+	[AllowAnonymous]
 	public class NewsLetterController : Controller
 	{
 		NewsLetterManager newsLetterManager = new NewsLetterManager(new EfNewsLetterRepository());
@@ -16,7 +18,7 @@ namespace CoreDemo.Controllers
 		}
 		[HttpPost]
         public PartialViewResult SubscribeMail(NewsLetter newsLetter)
-        {
+        {			
 			newsLetter.MailStatus = true;
 			newsLetterManager.AddNewsLetter(newsLetter);
 			Response.Redirect("/Blog/Index/");

@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface ICommentDal:IGenericDal<Comment>
+    public interface ICommentDal : IGenericDal<Comment>
     {
+        List<Comment> GetListWithBlog();
+
     }
 }

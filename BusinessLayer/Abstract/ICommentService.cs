@@ -10,9 +10,10 @@ namespace Business.Abstract
 	public interface ICommentService
 	{
 		void AddComment(Comment comment);
-		//void DeleteComment(Comment comment);
-		//void UpdateComment(Comment comment);
+		
 		List<Comment> GetAllComments(int id);
-		//Comment GetById(int id);
-	}
+
+        List<Comment> GetCommentWithBlog();
+
+    }
 }
